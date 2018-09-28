@@ -52,7 +52,7 @@ namespace NoteAppUi
 
             //Сортируем список.
             _project.Sort();
-            _refreshTable();            
+            RefreshTable();            
         }
 
         // Обновляем записи в информации о записке.

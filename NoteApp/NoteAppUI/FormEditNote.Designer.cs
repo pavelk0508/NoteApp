@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.LabelTitle = new System.Windows.Forms.Label();
             this.LabelCategory = new System.Windows.Forms.Label();
             this.LabelCreated = new System.Windows.Forms.Label();
@@ -39,6 +40,7 @@
             this.TextNote = new System.Windows.Forms.TextBox();
             this.ButtonCancel = new System.Windows.Forms.Button();
             this.ButtonOK = new System.Windows.Forms.Button();
+            this.TimerForCheckError = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
             // 
             // LabelTitle
@@ -145,6 +147,11 @@
             this.ButtonOK.UseVisualStyleBackColor = true;
             this.ButtonOK.Click += new System.EventHandler(this.buttonOK_Click);
             // 
+            // TimerForCheckError
+            // 
+            this.TimerForCheckError.Enabled = true;
+            this.TimerForCheckError.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
             // FormEditNote
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -183,5 +190,6 @@
         private System.Windows.Forms.TextBox TextNote;
         private System.Windows.Forms.Button ButtonCancel;
         private System.Windows.Forms.Button ButtonOK;
+        private System.Windows.Forms.Timer TimerForCheckError;
     }
 }

@@ -81,5 +81,42 @@ namespace NoteApp
             DialogResult = DialogResult.Cancel;
             this.Close();
         }
+
+        // Проверка на правильность ввода.
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            if (FieldTitle.Text.Length == 0 || FieldTitle.Text.Length > 50)
+            {
+                TextNote.BackColor = Color.Red;
+            }
+            else
+            {
+                TextNote.BackColor = Color.White;
+            }
+
+            if (TextNote.Text == "")
+            {
+                TextNote.BackColor = Color.Red;            
+            }
+            else
+            {
+                TextNote.BackColor = Color.White;
+            }
+            if (ComboBoxCategory.Text == "")
+            {
+                ComboBoxCategory.BackColor = Color.Red;
+            }
+            else
+            {
+                if (!(ComboBoxCategory.SelectedItem is NoteCategory ))
+                {
+                    ComboBoxCategory.BackColor = Color.Red;
+                }
+                else
+                {
+                    ComboBoxCategory.BackColor = Color.White;
+                }
+            }
+        }
     }
 }
