@@ -28,170 +28,457 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.fldTitle = new System.Windows.Forms.TextBox();
-            this.btnAdd = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.fldCategory = new System.Windows.Forms.ComboBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.fldText = new System.Windows.Forms.TextBox();
-            this.btnSave = new System.Windows.Forms.Button();
-            this.btnOpen = new System.Windows.Forms.Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.Title = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TimeAdded = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TimeChanged = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Category = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Text = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.MenuStrip = new System.Windows.Forms.MenuStrip();
+            this.FileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ExitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.EditToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.AddNoteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.EditNoteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.RemoveNoteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.HelpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.AboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.SplitContainerMain = new System.Windows.Forms.SplitContainer();
+            this.TablelLeft = new System.Windows.Forms.TableLayoutPanel();
+            this.SplitCategory = new System.Windows.Forms.SplitContainer();
+            this.LabelShowCategory = new System.Windows.Forms.Label();
+            this.ComboCategory = new System.Windows.Forms.ComboBox();
+            this.ListNotes = new System.Windows.Forms.ListBox();
+            this.TableLayoutPanelButtons = new System.Windows.Forms.TableLayoutPanel();
+            this.ButtonDelete = new System.Windows.Forms.Button();
+            this.ButtonEditNote = new System.Windows.Forms.Button();
+            this.ButtonAddNote = new System.Windows.Forms.Button();
+            this.TableNote = new System.Windows.Forms.TableLayoutPanel();
+            this.TextNote = new System.Windows.Forms.TextBox();
+            this.TableLayoutTitle = new System.Windows.Forms.TableLayoutPanel();
+            this.FieldTitle = new System.Windows.Forms.Label();
+            this.TableLayoutCategory = new System.Windows.Forms.TableLayoutPanel();
+            this.LabelCategory = new System.Windows.Forms.Label();
+            this.FieldCategory = new System.Windows.Forms.Label();
+            this.SplitContainerTime = new System.Windows.Forms.SplitContainer();
+            this.DateTimeCreated = new System.Windows.Forms.DateTimePicker();
+            this.LabelCreated = new System.Windows.Forms.Label();
+            this.DateTimeChanged = new System.Windows.Forms.DateTimePicker();
+            this.LabelModified = new System.Windows.Forms.Label();
+            this.MenuStrip.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.SplitContainerMain)).BeginInit();
+            this.SplitContainerMain.Panel1.SuspendLayout();
+            this.SplitContainerMain.Panel2.SuspendLayout();
+            this.SplitContainerMain.SuspendLayout();
+            this.TablelLeft.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.SplitCategory)).BeginInit();
+            this.SplitCategory.Panel1.SuspendLayout();
+            this.SplitCategory.Panel2.SuspendLayout();
+            this.SplitCategory.SuspendLayout();
+            this.TableLayoutPanelButtons.SuspendLayout();
+            this.TableNote.SuspendLayout();
+            this.TableLayoutTitle.SuspendLayout();
+            this.TableLayoutCategory.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.SplitContainerTime)).BeginInit();
+            this.SplitContainerTime.Panel1.SuspendLayout();
+            this.SplitContainerTime.Panel2.SuspendLayout();
+            this.SplitContainerTime.SuspendLayout();
             this.SuspendLayout();
             // 
-            // fldTitle
+            // MenuStrip
             // 
-            this.fldTitle.Location = new System.Drawing.Point(80, 12);
-            this.fldTitle.Name = "fldTitle";
-            this.fldTitle.Size = new System.Drawing.Size(196, 20);
-            this.fldTitle.TabIndex = 0;
+            this.MenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.FileToolStripMenuItem,
+            this.EditToolStripMenuItem,
+            this.HelpToolStripMenuItem});
+            this.MenuStrip.Location = new System.Drawing.Point(0, 0);
+            this.MenuStrip.Name = "MenuStrip";
+            this.MenuStrip.Size = new System.Drawing.Size(765, 24);
+            this.MenuStrip.TabIndex = 2;
+            this.MenuStrip.Text = "menuStrip1";
             // 
-            // btnAdd
+            // FileToolStripMenuItem
             // 
-            this.btnAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnAdd.Location = new System.Drawing.Point(192, 284);
-            this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(84, 27);
-            this.btnAdd.TabIndex = 1;
-            this.btnAdd.Text = "Добавить";
-            this.btnAdd.UseVisualStyleBackColor = true;
-            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
+            this.FileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.ExitToolStripMenuItem});
+            this.FileToolStripMenuItem.Name = "FileToolStripMenuItem";
+            this.FileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
+            this.FileToolStripMenuItem.Text = "File";
             // 
-            // label1
+            // ExitToolStripMenuItem
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 15);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(61, 13);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "Заголовок";
+            this.ExitToolStripMenuItem.Name = "ExitToolStripMenuItem";
+            this.ExitToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.ExitToolStripMenuItem.Text = "Exit";
+            this.ExitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
-            // label2
+            // EditToolStripMenuItem
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 50);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(60, 13);
-            this.label2.TabIndex = 3;
-            this.label2.Text = "Категория";
+            this.EditToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.AddNoteToolStripMenuItem,
+            this.EditNoteToolStripMenuItem,
+            this.RemoveNoteToolStripMenuItem});
+            this.EditToolStripMenuItem.Name = "EditToolStripMenuItem";
+            this.EditToolStripMenuItem.Size = new System.Drawing.Size(39, 20);
+            this.EditToolStripMenuItem.Text = "Edit";
             // 
-            // fldCategory
+            // AddNoteToolStripMenuItem
             // 
-            this.fldCategory.FormattingEnabled = true;
-            this.fldCategory.Items.AddRange(new object[] {
-            "Work",
-            "Home",
-            "HealthAndSport",
-            "People",
-            "Documents",
-            "Finance",
-            "Miscellaneous"});
-            this.fldCategory.Location = new System.Drawing.Point(80, 47);
-            this.fldCategory.Name = "fldCategory";
-            this.fldCategory.Size = new System.Drawing.Size(196, 21);
-            this.fldCategory.TabIndex = 4;
+            this.AddNoteToolStripMenuItem.Name = "AddNoteToolStripMenuItem";
+            this.AddNoteToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.AddNoteToolStripMenuItem.Text = "Add Note";
+            this.AddNoteToolStripMenuItem.Click += new System.EventHandler(this.addNoteToolStripMenuItem_Click);
             // 
-            // label3
+            // EditNoteToolStripMenuItem
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(12, 88);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(37, 13);
-            this.label3.TabIndex = 5;
-            this.label3.Text = "Текст";
+            this.EditNoteToolStripMenuItem.Name = "EditNoteToolStripMenuItem";
+            this.EditNoteToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.EditNoteToolStripMenuItem.Text = "Edit Note";
+            this.EditNoteToolStripMenuItem.Click += new System.EventHandler(this.editNoteToolStripMenuItem_Click);
             // 
-            // fldText
+            // RemoveNoteToolStripMenuItem
             // 
-            this.fldText.Location = new System.Drawing.Point(15, 104);
-            this.fldText.Multiline = true;
-            this.fldText.Name = "fldText";
-            this.fldText.Size = new System.Drawing.Size(261, 174);
-            this.fldText.TabIndex = 6;
+            this.RemoveNoteToolStripMenuItem.Name = "RemoveNoteToolStripMenuItem";
+            this.RemoveNoteToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.RemoveNoteToolStripMenuItem.Text = "Remove Note";
+            this.RemoveNoteToolStripMenuItem.Click += new System.EventHandler(this.removeNoteToolStripMenuItem_Click);
             // 
-            // btnSave
+            // HelpToolStripMenuItem
             // 
-            this.btnSave.Location = new System.Drawing.Point(282, 10);
-            this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(75, 23);
-            this.btnSave.TabIndex = 7;
-            this.btnSave.Text = "Сохранить";
-            this.btnSave.UseVisualStyleBackColor = true;
-            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+            this.HelpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.AboutToolStripMenuItem});
+            this.HelpToolStripMenuItem.Name = "HelpToolStripMenuItem";
+            this.HelpToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
+            this.HelpToolStripMenuItem.Text = "Help";
             // 
-            // btnOpen
+            // AboutToolStripMenuItem
             // 
-            this.btnOpen.Location = new System.Drawing.Point(363, 9);
-            this.btnOpen.Name = "btnOpen";
-            this.btnOpen.Size = new System.Drawing.Size(75, 23);
-            this.btnOpen.TabIndex = 8;
-            this.btnOpen.Text = "Открыть";
-            this.btnOpen.UseVisualStyleBackColor = true;
-            this.btnOpen.Click += new System.EventHandler(this.btnOpen_Click);
+            this.AboutToolStripMenuItem.Name = "AboutToolStripMenuItem";
+            this.AboutToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.AboutToolStripMenuItem.Text = "About";
+            this.AboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
             // 
-            // dataGridView1
+            // SplitContainerMain
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Title,
-            this.TimeAdded,
-            this.TimeChanged,
-            this.Category,
-            this.Text});
-            this.dataGridView1.Location = new System.Drawing.Point(282, 39);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(563, 272);
-            this.dataGridView1.TabIndex = 9;
-            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick_1);
+            this.SplitContainerMain.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.SplitContainerMain.Location = new System.Drawing.Point(0, 24);
+            this.SplitContainerMain.Name = "SplitContainerMain";
             // 
-            // Title
+            // SplitContainerMain.Panel1
             // 
-            this.Title.HeaderText = "Заголовок";
-            this.Title.Name = "Title";
+            this.SplitContainerMain.Panel1.Controls.Add(this.TablelLeft);
+            this.SplitContainerMain.Panel1MinSize = 217;
             // 
-            // TimeAdded
+            // SplitContainerMain.Panel2
             // 
-            this.TimeAdded.HeaderText = "Дата добавления";
-            this.TimeAdded.Name = "TimeAdded";
+            this.SplitContainerMain.Panel2.Controls.Add(this.TableNote);
+            this.SplitContainerMain.Panel2MinSize = 400;
+            this.SplitContainerMain.Size = new System.Drawing.Size(765, 422);
+            this.SplitContainerMain.SplitterDistance = 217;
+            this.SplitContainerMain.TabIndex = 3;
             // 
-            // TimeChanged
+            // TablelLeft
             // 
-            this.TimeChanged.HeaderText = "Дата изменения";
-            this.TimeChanged.Name = "TimeChanged";
+            this.TablelLeft.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.TablelLeft.ColumnCount = 1;
+            this.TablelLeft.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.TablelLeft.Controls.Add(this.SplitCategory, 0, 0);
+            this.TablelLeft.Controls.Add(this.ListNotes, 0, 1);
+            this.TablelLeft.Controls.Add(this.TableLayoutPanelButtons, 0, 2);
+            this.TablelLeft.Location = new System.Drawing.Point(3, 3);
+            this.TablelLeft.Name = "TablelLeft";
+            this.TablelLeft.RowCount = 3;
+            this.TablelLeft.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 28F));
+            this.TablelLeft.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.TablelLeft.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 27F));
+            this.TablelLeft.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.TablelLeft.Size = new System.Drawing.Size(211, 416);
+            this.TablelLeft.TabIndex = 0;
             // 
-            // Category
+            // SplitCategory
             // 
-            this.Category.HeaderText = "Категория";
-            this.Category.Name = "Category";
+            this.SplitCategory.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.SplitCategory.Location = new System.Drawing.Point(3, 3);
+            this.SplitCategory.Name = "SplitCategory";
             // 
-            // Text
+            // SplitCategory.Panel1
             // 
-            this.Text.HeaderText = "Текст";
-            this.Text.Name = "Text";
+            this.SplitCategory.Panel1.Controls.Add(this.LabelShowCategory);
+            this.SplitCategory.Panel1MinSize = 82;
+            // 
+            // SplitCategory.Panel2
+            // 
+            this.SplitCategory.Panel2.Controls.Add(this.ComboCategory);
+            this.SplitCategory.Panel2MinSize = 82;
+            this.SplitCategory.Size = new System.Drawing.Size(205, 22);
+            this.SplitCategory.SplitterDistance = 82;
+            this.SplitCategory.TabIndex = 0;
+            // 
+            // LabelShowCategory
+            // 
+            this.LabelShowCategory.AutoSize = true;
+            this.LabelShowCategory.Location = new System.Drawing.Point(1, 3);
+            this.LabelShowCategory.Name = "LabelShowCategory";
+            this.LabelShowCategory.Size = new System.Drawing.Size(82, 13);
+            this.LabelShowCategory.TabIndex = 0;
+            this.LabelShowCategory.Text = "Show Category:";
+            // 
+            // ComboCategory
+            // 
+            this.ComboCategory.Dock = System.Windows.Forms.DockStyle.Right;
+            this.ComboCategory.FormattingEnabled = true;
+            this.ComboCategory.Location = new System.Drawing.Point(3, 0);
+            this.ComboCategory.Name = "ComboCategory";
+            this.ComboCategory.Size = new System.Drawing.Size(116, 21);
+            this.ComboCategory.TabIndex = 0;
+            // 
+            // ListNotes
+            // 
+            this.ListNotes.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.ListNotes.FormattingEnabled = true;
+            this.ListNotes.Location = new System.Drawing.Point(3, 31);
+            this.ListNotes.Name = "ListNotes";
+            this.ListNotes.Size = new System.Drawing.Size(205, 355);
+            this.ListNotes.TabIndex = 1;
+            this.ListNotes.SelectedIndexChanged += new System.EventHandler(this.listNotes_SelectedIndexChanged);
+            // 
+            // TableLayoutPanelButtons
+            // 
+            this.TableLayoutPanelButtons.ColumnCount = 4;
+            this.TableLayoutPanelButtons.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 27F));
+            this.TableLayoutPanelButtons.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 27F));
+            this.TableLayoutPanelButtons.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 27F));
+            this.TableLayoutPanelButtons.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 183F));
+            this.TableLayoutPanelButtons.Controls.Add(this.ButtonDelete, 0, 0);
+            this.TableLayoutPanelButtons.Controls.Add(this.ButtonEditNote, 0, 0);
+            this.TableLayoutPanelButtons.Controls.Add(this.ButtonAddNote, 0, 0);
+            this.TableLayoutPanelButtons.Location = new System.Drawing.Point(3, 392);
+            this.TableLayoutPanelButtons.Name = "TableLayoutPanelButtons";
+            this.TableLayoutPanelButtons.RowCount = 1;
+            this.TableLayoutPanelButtons.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.TableLayoutPanelButtons.Size = new System.Drawing.Size(205, 21);
+            this.TableLayoutPanelButtons.TabIndex = 2;
+            // 
+            // ButtonDelete
+            // 
+            this.ButtonDelete.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.ButtonDelete.FlatAppearance.BorderSize = 0;
+            this.ButtonDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ButtonDelete.Image = global::NoteAppUi.Properties.Resources.icons8_мусор;
+            this.ButtonDelete.Location = new System.Drawing.Point(57, 3);
+            this.ButtonDelete.Name = "ButtonDelete";
+            this.ButtonDelete.Size = new System.Drawing.Size(20, 15);
+            this.ButtonDelete.TabIndex = 5;
+            this.ButtonDelete.UseVisualStyleBackColor = true;
+            this.ButtonDelete.Click += new System.EventHandler(this.buttonDelete_Click);
+            // 
+            // ButtonEditNote
+            // 
+            this.ButtonEditNote.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.ButtonEditNote.FlatAppearance.BorderSize = 0;
+            this.ButtonEditNote.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ButtonEditNote.Image = global::NoteAppUi.Properties.Resources.icons8_редактировать_графический_отчет;
+            this.ButtonEditNote.Location = new System.Drawing.Point(30, 3);
+            this.ButtonEditNote.Name = "ButtonEditNote";
+            this.ButtonEditNote.Size = new System.Drawing.Size(20, 15);
+            this.ButtonEditNote.TabIndex = 4;
+            this.ButtonEditNote.UseVisualStyleBackColor = true;
+            this.ButtonEditNote.Click += new System.EventHandler(this.buttonEditNote_Click);
+            // 
+            // ButtonAddNote
+            // 
+            this.ButtonAddNote.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.ButtonAddNote.FlatAppearance.BorderSize = 0;
+            this.ButtonAddNote.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ButtonAddNote.Image = global::NoteAppUi.Properties.Resources.icons8_файл;
+            this.ButtonAddNote.Location = new System.Drawing.Point(3, 3);
+            this.ButtonAddNote.Name = "ButtonAddNote";
+            this.ButtonAddNote.Size = new System.Drawing.Size(20, 15);
+            this.ButtonAddNote.TabIndex = 3;
+            this.ButtonAddNote.UseVisualStyleBackColor = true;
+            this.ButtonAddNote.Click += new System.EventHandler(this.buttonAddNote_Click);
+            // 
+            // TableNote
+            // 
+            this.TableNote.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.TableNote.ColumnCount = 1;
+            this.TableNote.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 538F));
+            this.TableNote.Controls.Add(this.TextNote, 0, 1);
+            this.TableNote.Controls.Add(this.TableLayoutTitle, 0, 0);
+            this.TableNote.Location = new System.Drawing.Point(3, 3);
+            this.TableNote.Name = "TableNote";
+            this.TableNote.RowCount = 2;
+            this.TableNote.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 86F));
+            this.TableNote.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.TableNote.Size = new System.Drawing.Size(538, 416);
+            this.TableNote.TabIndex = 0;
+            // 
+            // TextNote
+            // 
+            this.TextNote.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.TextNote.Location = new System.Drawing.Point(3, 89);
+            this.TextNote.Multiline = true;
+            this.TextNote.Name = "TextNote";
+            this.TextNote.ReadOnly = true;
+            this.TextNote.Size = new System.Drawing.Size(532, 324);
+            this.TextNote.TabIndex = 0;
+            // 
+            // TableLayoutTitle
+            // 
+            this.TableLayoutTitle.ColumnCount = 1;
+            this.TableLayoutTitle.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.TableLayoutTitle.Controls.Add(this.FieldTitle, 0, 0);
+            this.TableLayoutTitle.Controls.Add(this.TableLayoutCategory, 0, 1);
+            this.TableLayoutTitle.Controls.Add(this.SplitContainerTime, 0, 2);
+            this.TableLayoutTitle.Location = new System.Drawing.Point(3, 3);
+            this.TableLayoutTitle.Name = "TableLayoutTitle";
+            this.TableLayoutTitle.RowCount = 3;
+            this.TableLayoutTitle.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 32F));
+            this.TableLayoutTitle.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 22F));
+            this.TableLayoutTitle.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 16F));
+            this.TableLayoutTitle.Size = new System.Drawing.Size(532, 80);
+            this.TableLayoutTitle.TabIndex = 1;
+            // 
+            // FieldTitle
+            // 
+            this.FieldTitle.AutoSize = true;
+            this.FieldTitle.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.FieldTitle.Location = new System.Drawing.Point(3, 0);
+            this.FieldTitle.Name = "FieldTitle";
+            this.FieldTitle.Size = new System.Drawing.Size(0, 30);
+            this.FieldTitle.TabIndex = 0;
+            // 
+            // TableLayoutCategory
+            // 
+            this.TableLayoutCategory.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.TableLayoutCategory.ColumnCount = 2;
+            this.TableLayoutCategory.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 65F));
+            this.TableLayoutCategory.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.TableLayoutCategory.Controls.Add(this.LabelCategory, 0, 0);
+            this.TableLayoutCategory.Controls.Add(this.FieldCategory, 1, 0);
+            this.TableLayoutCategory.Location = new System.Drawing.Point(3, 35);
+            this.TableLayoutCategory.Name = "TableLayoutCategory";
+            this.TableLayoutCategory.RowCount = 1;
+            this.TableLayoutCategory.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.TableLayoutCategory.Size = new System.Drawing.Size(526, 16);
+            this.TableLayoutCategory.TabIndex = 1;
+            // 
+            // LabelCategory
+            // 
+            this.LabelCategory.AutoSize = true;
+            this.LabelCategory.Location = new System.Drawing.Point(3, 0);
+            this.LabelCategory.Name = "LabelCategory";
+            this.LabelCategory.Size = new System.Drawing.Size(52, 13);
+            this.LabelCategory.TabIndex = 0;
+            this.LabelCategory.Text = "Category:";
+            // 
+            // FieldCategory
+            // 
+            this.FieldCategory.AutoSize = true;
+            this.FieldCategory.Location = new System.Drawing.Point(68, 0);
+            this.FieldCategory.Name = "FieldCategory";
+            this.FieldCategory.Size = new System.Drawing.Size(0, 13);
+            this.FieldCategory.TabIndex = 1;
+            // 
+            // SplitContainerTime
+            // 
+            this.SplitContainerTime.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.SplitContainerTime.Location = new System.Drawing.Point(3, 57);
+            this.SplitContainerTime.Name = "SplitContainerTime";
+            // 
+            // SplitContainerTime.Panel1
+            // 
+            this.SplitContainerTime.Panel1.Controls.Add(this.DateTimeCreated);
+            this.SplitContainerTime.Panel1.Controls.Add(this.LabelCreated);
+            this.SplitContainerTime.Panel1MinSize = 194;
+            // 
+            // SplitContainerTime.Panel2
+            // 
+            this.SplitContainerTime.Panel2.Controls.Add(this.DateTimeChanged);
+            this.SplitContainerTime.Panel2.Controls.Add(this.LabelModified);
+            this.SplitContainerTime.Panel2MinSize = 194;
+            this.SplitContainerTime.Size = new System.Drawing.Size(526, 20);
+            this.SplitContainerTime.SplitterDistance = 194;
+            this.SplitContainerTime.TabIndex = 2;
+            // 
+            // DateTimeCreated
+            // 
+            this.DateTimeCreated.Enabled = false;
+            this.DateTimeCreated.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.DateTimeCreated.Location = new System.Drawing.Point(71, 0);
+            this.DateTimeCreated.Name = "DateTimeCreated";
+            this.DateTimeCreated.Size = new System.Drawing.Size(93, 20);
+            this.DateTimeCreated.TabIndex = 1;
+            // 
+            // LabelCreated
+            // 
+            this.LabelCreated.AutoSize = true;
+            this.LabelCreated.Location = new System.Drawing.Point(3, 3);
+            this.LabelCreated.Name = "LabelCreated";
+            this.LabelCreated.Size = new System.Drawing.Size(47, 13);
+            this.LabelCreated.TabIndex = 0;
+            this.LabelCreated.Text = "Created:";
+            // 
+            // DateTimeChanged
+            // 
+            this.DateTimeChanged.Enabled = false;
+            this.DateTimeChanged.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.DateTimeChanged.Location = new System.Drawing.Point(59, 0);
+            this.DateTimeChanged.Name = "DateTimeChanged";
+            this.DateTimeChanged.Size = new System.Drawing.Size(96, 20);
+            this.DateTimeChanged.TabIndex = 2;
+            // 
+            // LabelModified
+            // 
+            this.LabelModified.AutoSize = true;
+            this.LabelModified.Location = new System.Drawing.Point(3, 3);
+            this.LabelModified.Name = "LabelModified";
+            this.LabelModified.Size = new System.Drawing.Size(50, 13);
+            this.LabelModified.TabIndex = 1;
+            this.LabelModified.Text = "Modified:";
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(857, 316);
-            this.Controls.Add(this.dataGridView1);
-            this.Controls.Add(this.btnOpen);
-            this.Controls.Add(this.btnSave);
-            this.Controls.Add(this.fldText);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.fldCategory);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.btnAdd);
-            this.Controls.Add(this.fldTitle);
+            this.ClientSize = new System.Drawing.Size(765, 446);
+            this.Controls.Add(this.SplitContainerMain);
+            this.Controls.Add(this.MenuStrip);
+            this.MinimumSize = new System.Drawing.Size(637, 165);
             this.Name = "MainForm";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.Text = "NoteApp";
+            this.Load += new System.EventHandler(this.MainForm_Load);
+            this.MenuStrip.ResumeLayout(false);
+            this.MenuStrip.PerformLayout();
+            this.SplitContainerMain.Panel1.ResumeLayout(false);
+            this.SplitContainerMain.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.SplitContainerMain)).EndInit();
+            this.SplitContainerMain.ResumeLayout(false);
+            this.TablelLeft.ResumeLayout(false);
+            this.SplitCategory.Panel1.ResumeLayout(false);
+            this.SplitCategory.Panel1.PerformLayout();
+            this.SplitCategory.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.SplitCategory)).EndInit();
+            this.SplitCategory.ResumeLayout(false);
+            this.TableLayoutPanelButtons.ResumeLayout(false);
+            this.TableNote.ResumeLayout(false);
+            this.TableNote.PerformLayout();
+            this.TableLayoutTitle.ResumeLayout(false);
+            this.TableLayoutTitle.PerformLayout();
+            this.TableLayoutCategory.ResumeLayout(false);
+            this.TableLayoutCategory.PerformLayout();
+            this.SplitContainerTime.Panel1.ResumeLayout(false);
+            this.SplitContainerTime.Panel1.PerformLayout();
+            this.SplitContainerTime.Panel2.ResumeLayout(false);
+            this.SplitContainerTime.Panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.SplitContainerTime)).EndInit();
+            this.SplitContainerTime.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -199,21 +486,37 @@
 
         #endregion
 
-        private System.Windows.Forms.TextBox fldTitle;
-        private System.Windows.Forms.Button btnAdd;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.ComboBox fldCategory;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox fldText;
-        private System.Windows.Forms.Button btnSave;
-        private System.Windows.Forms.Button btnOpen;
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Title;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TimeAdded;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TimeChanged;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Category;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Text;
+        private System.Windows.Forms.MenuStrip MenuStrip;
+        private System.Windows.Forms.ToolStripMenuItem FileToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem EditToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem HelpToolStripMenuItem;
+        private System.Windows.Forms.SplitContainer SplitContainerMain;
+        private System.Windows.Forms.TableLayoutPanel TablelLeft;
+        private System.Windows.Forms.SplitContainer SplitCategory;
+        private System.Windows.Forms.Label LabelShowCategory;
+        private System.Windows.Forms.ComboBox ComboCategory;
+        private System.Windows.Forms.ListBox ListNotes;
+        private System.Windows.Forms.TableLayoutPanel TableLayoutPanelButtons;
+        private System.Windows.Forms.Button ButtonDelete;
+        private System.Windows.Forms.Button ButtonEditNote;
+        private System.Windows.Forms.Button ButtonAddNote;
+        private System.Windows.Forms.TableLayoutPanel TableNote;
+        private System.Windows.Forms.TextBox TextNote;
+        private System.Windows.Forms.TableLayoutPanel TableLayoutTitle;
+        private System.Windows.Forms.Label FieldTitle;
+        private System.Windows.Forms.TableLayoutPanel TableLayoutCategory;
+        private System.Windows.Forms.Label LabelCategory;
+        private System.Windows.Forms.Label FieldCategory;
+        private System.Windows.Forms.SplitContainer SplitContainerTime;
+        private System.Windows.Forms.DateTimePicker DateTimeCreated;
+        private System.Windows.Forms.Label LabelCreated;
+        private System.Windows.Forms.DateTimePicker DateTimeChanged;
+        private System.Windows.Forms.Label LabelModified;
+        private System.Windows.Forms.ToolStripMenuItem ExitToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem AddNoteToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem EditNoteToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem RemoveNoteToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem AboutToolStripMenuItem;
     }
 }
 

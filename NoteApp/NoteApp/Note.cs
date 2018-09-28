@@ -117,7 +117,7 @@ namespace NoteApp
             }
             set
             {
-                if (value >= 0)
+                if (value >= NoteCategory.Work && value <=NoteCategory.Miscellaneous)
                 {
                     _noteCategory = value;
                 }
@@ -134,7 +134,11 @@ namespace NoteApp
         /// <returns>Возвращает дубликат текущей записки.</returns>
         public object Clone()
         {
-            return new Note(this.TimeCreated) { Title = this.Title, TimeChanged = this.TimeChanged, Category = this.Category, Text=this.Text };
+            Note note = new Note(this.TimeCreated);
+            note.Title = this.Title;
+            note.Text = this.Text;
+            note.TimeChanged = this.TimeChanged;
+            return note;
         }
     }
 }

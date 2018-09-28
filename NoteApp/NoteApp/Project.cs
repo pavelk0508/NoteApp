@@ -28,7 +28,6 @@ namespace NoteApp
         /// </summary>
         public void Sort()
         {
-            //функционал нужно дописать.
             NoteList.Sort((a, b) => a.TimeChanged.CompareTo(b.TimeChanged));
         }
     }
