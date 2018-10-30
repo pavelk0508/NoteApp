@@ -117,7 +117,7 @@ namespace NoteApp
             }
             set
             {
-                if (value >= NoteCategory.Work && value <=NoteCategory.Miscellaneous)
+                if (value >= NoteCategory.Work && value <= NoteCategory.Miscellaneous)
                 {
                     _noteCategory = value;
                 }
@@ -139,6 +139,11 @@ namespace NoteApp
             note.Text = this.Text;
             note.TimeChanged = this.TimeChanged;
             return note;
+        }
+
+        public string ToString()
+        {
+            return $"{this.Title} {this.TimeCreated} {this.TimeChanged} {this.Category} {this.Text}";
         }
     }
 }

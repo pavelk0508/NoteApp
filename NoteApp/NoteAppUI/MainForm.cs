@@ -28,12 +28,9 @@ namespace NoteAppUi
         /// </summary>
         private void RefreshTable()
         {
-            ListNotes.Items.Clear();
             //Заполняем listNotes.
-            for (int i = 0; i < _project.NoteList.Count; i++)
-            {
-                ListNotes.Items.Add(_project.NoteList[i].Title);
-            }
+            ListNotes.DataSource = null;
+            ListNotes.DataSource = _project.NoteList;
             ProjectManager.SaveToFile(_project);
         }
 
@@ -58,39 +55,31 @@ namespace NoteAppUi
         // Обновляем записи в информации о записке.
         private void listNotes_SelectedIndexChanged(object sender, EventArgs e)
         {
-            FieldTitle.Text = _project.NoteList[ListNotes.SelectedIndex].Title;
-            FieldCategory.Text = _project.NoteList[ListNotes.SelectedIndex].Category.ToString();
-            DateTimeCreated.Value = _project.NoteList[ListNotes.SelectedIndex].TimeCreated;
-            DateTimeChanged.Value = _project.NoteList[ListNotes.SelectedIndex].TimeChanged;
-            TextNote.Text = _project.NoteList[ListNotes.SelectedIndex].Text;
+          
         }
 
         //Добавить записку.
         private void buttonAddNote_Click(object sender, EventArgs e)
         {
-            int selectedItem = ListNotes.SelectedIndex;
             FormEditNote form = new FormEditNote();
             if (form.ShowDialog() == DialogResult.OK)
             {
                 _project.NoteList.Add(form.Note);
                 RefreshTable();
-                ListNotes.SelectedIndex = selectedItem;
             }
         }
 
         //Редактировать записку.
         private void buttonEditNote_Click(object sender, EventArgs e)
         {
-            int selectedItem = ListNotes.SelectedIndex;
-            if (ListNotes.SelectedIndex >= 0)
+            if (ListNotes.CurrentRow != null)
             {
                 FormEditNote form = new FormEditNote();
-                form.Note = _project.NoteList[ListNotes.SelectedIndex];
+                form.Note = _project.NoteList[ListNotes.CurrentRow.Index];
                 if (form.ShowDialog() == DialogResult.OK)
                 {
-                    _project.NoteList[ListNotes.SelectedIndex] = form.Note;
+                    _project.NoteList[ListNotes.CurrentRow.Index] = form.Note;
                     RefreshTable();
-                    ListNotes.SelectedIndex = selectedItem;
                 }
             }
         }
@@ -98,14 +87,12 @@ namespace NoteAppUi
         //Кнопка удаления
         private void buttonDelete_Click(object sender, EventArgs e)
         {
-            int selectedItem = ListNotes.SelectedIndex;
-            if (ListNotes.SelectedIndex >= 0)
+            if (ListNotes.CurrentRow != null)
             {
                 if(MessageBox.Show("Вы уверены?", "Удаление", MessageBoxButtons.YesNo) == DialogResult.Yes)
                 {
-                    _project.NoteList.Remove(_project.NoteList[selectedItem]);
+                    _project.NoteList.Remove((Note)ListNotes.CurrentRow.DataBoundItem);
                     RefreshTable();
-                    ListNotes.SelectedIndex = selectedItem - 1;
                 }
             }
         }
@@ -117,42 +104,37 @@ namespace NoteAppUi
 
         private void addNoteToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            int selectedItem = ListNotes.SelectedIndex;
             FormEditNote form = new FormEditNote();
             if (form.ShowDialog() == DialogResult.OK)
             {
                 _project.NoteList.Add(form.Note);
                 RefreshTable();
-                ListNotes.SelectedIndex = selectedItem;
             }
         }
 
         private void editNoteToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            int selectedItem = ListNotes.SelectedIndex;
-            if (ListNotes.SelectedIndex >= 0)
+            if (ListNotes.CurrentRow != null)
             {
                 FormEditNote form = new FormEditNote();
-                form.Note = _project.NoteList[ListNotes.SelectedIndex];
+                form.Note = _project.NoteList[ListNotes.CurrentRow.Index];
                 if (form.ShowDialog() == DialogResult.OK)
                 {
-                    _project.NoteList[ListNotes.SelectedIndex] = form.Note;
+                    _project.NoteList[ListNotes.CurrentRow.Index] = form.Note;
                     RefreshTable();
-                    ListNotes.SelectedIndex = selectedItem;
                 }
             }
         }
 
         private void removeNoteToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            int selectedItem = ListNotes.SelectedIndex;
-            if (ListNotes.SelectedIndex >= 0)
+            if (ListNotes.CurrentRow != null)
             {
                 if (MessageBox.Show("Вы уверены?", "Удаление", MessageBoxButtons.YesNo) == DialogResult.Yes)
                 {
-                    _project.NoteList.Remove(_project.NoteList[selectedItem]);
+                    _project.NoteList.Remove((Note)ListNotes.CurrentRow.DataBoundItem);
                     RefreshTable();
-                    ListNotes.SelectedIndex = selectedItem - 1;
+                 
                 }
             }
 
@@ -162,6 +144,30 @@ namespace NoteAppUi
         {
             FormAbout form = new FormAbout();
             form.ShowDialog();
+        }
+
+        private void TableLayoutTitle_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void TextNote_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ListNotes_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            
+        }
+
+        private void ListNotes_Click(object sender, EventArgs e)
+        {
+            FieldTitle.Text = _project.NoteList[ListNotes.CurrentRow.Index].Title;
+            FieldCategory.Text = _project.NoteList[ListNotes.CurrentRow.Index].Category.ToString();
+            DateTimeCreated.Value = _project.NoteList[ListNotes.CurrentRow.Index].TimeCreated;
+            DateTimeChanged.Value = _project.NoteList[ListNotes.CurrentRow.Index].TimeChanged;
+            TextNote.Text = _project.NoteList[ListNotes.CurrentRow.Index].Text;
         }
     }
 }
