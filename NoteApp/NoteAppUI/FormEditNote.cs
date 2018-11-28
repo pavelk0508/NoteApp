@@ -42,12 +42,13 @@ namespace NoteApp
             try
             {
                 Note.Title = FieldTitle.Text;
-                Note.Category = (NoteCategory)ComboBoxCategory.SelectedIndex;
+                Note.Category = (NoteCategory)(ComboBoxCategory.SelectedIndex + 1);
                 Note.Text = TextNote.Text;
+                Note.TimeChanged = DateTime.Now;
                 DialogResult = DialogResult.OK;
                 this.Close();
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
@@ -69,7 +70,7 @@ namespace NoteApp
                 Note = new Note(DateTime.Now);
             }
             FieldTitle.Text = Note.Title;
-            ComboBoxCategory.SelectedIndex = (int)Note.Category;
+            ComboBoxCategory.SelectedIndex = (int)Note.Category - 1;
             DateTimeCreated.Value = Note.TimeCreated;
             DateTimeChanged.Value = Note.TimeChanged;
             TextNote.Text = Note.Text;
@@ -87,7 +88,7 @@ namespace NoteApp
         {
             if (FieldTitle.Text.Length == 0 || FieldTitle.Text.Length > 50)
             {
-                TextNote.BackColor = Color.Red;
+                TextNote.BackColor = Color.LightSalmon;
             }
             else
             {
@@ -96,7 +97,7 @@ namespace NoteApp
 
             if (TextNote.Text == "")
             {
-                TextNote.BackColor = Color.Red;            
+                TextNote.BackColor = Color.LightSalmon;
             }
             else
             {
@@ -104,19 +105,24 @@ namespace NoteApp
             }
             if (ComboBoxCategory.Text == "")
             {
-                ComboBoxCategory.BackColor = Color.Red;
+                ComboBoxCategory.BackColor = Color.LightSalmon;
             }
             else
             {
-                if (!(ComboBoxCategory.SelectedItem is NoteCategory ))
+                if (!(ComboBoxCategory.SelectedItem is NoteCategory))
                 {
-                    ComboBoxCategory.BackColor = Color.Red;
+                    ComboBoxCategory.BackColor = Color.LightSalmon;
                 }
                 else
                 {
                     ComboBoxCategory.BackColor = Color.White;
                 }
             }
+        }
+
+        private void ComboBoxCategory_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

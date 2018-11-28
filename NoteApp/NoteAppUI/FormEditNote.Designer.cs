@@ -95,6 +95,7 @@
             this.ComboBoxCategory.Name = "ComboBoxCategory";
             this.ComboBoxCategory.Size = new System.Drawing.Size(130, 21);
             this.ComboBoxCategory.TabIndex = 5;
+            this.ComboBoxCategory.SelectedIndexChanged += new System.EventHandler(this.ComboBoxCategory_SelectedIndexChanged);
             // 
             // DateTimeCreated
             // 

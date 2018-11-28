@@ -38,6 +38,18 @@ namespace NoteApp
         }
 
         /// <summary>
+        /// Задать параметры записки из другой записки.
+        /// </summary>
+        /// <param name="note">Записка.</param>
+        public void Set(Note note)
+        {
+            this._noteCategory = note.Category;
+            this._text = note.Text;
+            this._title = note.Title;
+            this._timeChanged = note.TimeChanged;
+        }
+
+        /// <summary>
         /// Задание даты изменения.
         /// </summary>
         public DateTime TimeChanged
@@ -138,8 +150,10 @@ namespace NoteApp
             note.Title = this.Title;
             note.Text = this.Text;
             note.TimeChanged = this.TimeChanged;
+            note.Category = this.Category;
             return note;
         }
+
 
         public string ToString()
         {

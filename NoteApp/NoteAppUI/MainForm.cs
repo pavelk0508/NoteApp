@@ -16,6 +16,7 @@ namespace NoteAppUi
     /// </summary>
     public partial class MainForm : Form
     {
+        //Основной список заметок.
         private Project _project = new Project();
 
         public MainForm()
@@ -24,18 +25,66 @@ namespace NoteAppUi
         }
 
         /// <summary>
+        /// Edit selected note.
+        /// </summary>
+        private void EditNote()
+        {
+            if (ListNotes.CurrentRow != null)
+            {
+                var item = (Note)ListNotes.CurrentRow.DataBoundItem;
+                FormEditNote form = new FormEditNote();
+                form.Note = (Note)item.Clone();
+                if (form.ShowDialog() == DialogResult.OK)
+                {
+                    item.Set(form.Note);
+                    RefreshTable();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Add new note.
+        /// </summary>
+        private void AddNote()
+        {
+            FormEditNote form = new FormEditNote();
+            if (form.ShowDialog() == DialogResult.OK)
+            {
+                _project.NoteList.Add(form.Note);
+                RefreshTable();
+            }
+        }
+
+        /// <summary>
+        /// Delete selected note.
+        /// </summary>
+        private void DeleteNote()
+        {
+            if (ListNotes.CurrentRow != null)
+            {
+                if (MessageBox.Show("Вы уверены?", "Удаление", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                {
+                    _project.NoteList.Remove((Note)ListNotes.CurrentRow.DataBoundItem);
+                    RefreshTable();
+                }
+            }
+        }
+
+        /// <summary>
         /// Обновление listNotes и сохранение в файле изменения.
         /// </summary>
         private void RefreshTable()
-        {
+        {        
+            ProjectManager.SaveToFile(_project);
+
             //Заполняем listNotes.
             ListNotes.DataSource = null;
-            ListNotes.DataSource = _project.NoteList;
-            ProjectManager.SaveToFile(_project);
+            ListNotes.DataSource = _project.Sort(ComboCategory.SelectedIndex);
         }
 
-        // Попытка открыть файл с заметками. Если такового нет, то создать.
-        // Также заполнить список записок listNotes.
+        /// <summary>
+        /// Попытка открыть файл с заметками. Если такового нет, то создать. Заполняем список заметок.
+        /// </summary>
         private void MainForm_Load(object sender, EventArgs e)
         {
             try
@@ -47,127 +96,132 @@ namespace NoteAppUi
                 ProjectManager.SaveToFile(_project);
             }
 
-            //Сортируем список.
-            _project.Sort();
-            RefreshTable();            
+            ComboCategory.SelectedIndex = 0;
+
+            //Сортируем список.     
+            RefreshTable();
+
+            if (_project.CurrentNote != null)
+            {
+                var index = ((List<Note>) ListNotes.DataSource).FindIndex(a => a.ToString() == _project.CurrentNote.ToString());
+                ListNotes.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+                if (ListNotes.Rows.Count > 0 && index >= 0)
+                {
+                    ListNotes.Rows[index].Selected = true;
+                }
+            }
         }
 
-        // Обновляем записи в информации о записке.
-        private void listNotes_SelectedIndexChanged(object sender, EventArgs e)
-        {
-          
-        }
-
-        //Добавить записку.
+        /// <summary>
+        /// Добавить записку.
+        /// </summary>
         private void buttonAddNote_Click(object sender, EventArgs e)
         {
-            FormEditNote form = new FormEditNote();
-            if (form.ShowDialog() == DialogResult.OK)
-            {
-                _project.NoteList.Add(form.Note);
-                RefreshTable();
-            }
+            AddNote();
         }
 
-        //Редактировать записку.
+        /// <summary>
+        /// Редактировать записку.
+        /// </summary>
         private void buttonEditNote_Click(object sender, EventArgs e)
         {
-            if (ListNotes.CurrentRow != null)
-            {
-                FormEditNote form = new FormEditNote();
-                form.Note = _project.NoteList[ListNotes.CurrentRow.Index];
-                if (form.ShowDialog() == DialogResult.OK)
-                {
-                    _project.NoteList[ListNotes.CurrentRow.Index] = form.Note;
-                    RefreshTable();
-                }
-            }
+            EditNote();
         }
 
-        //Кнопка удаления
+        /// <summary>
+        /// Кнопка удаления
+        /// </summary>
         private void buttonDelete_Click(object sender, EventArgs e)
         {
-            if (ListNotes.CurrentRow != null)
-            {
-                if(MessageBox.Show("Вы уверены?", "Удаление", MessageBoxButtons.YesNo) == DialogResult.Yes)
-                {
-                    _project.NoteList.Remove((Note)ListNotes.CurrentRow.DataBoundItem);
-                    RefreshTable();
-                }
-            }
+            DeleteNote();
         }
 
+        /// <summary>
+        /// Кнопка выхода.
+        /// </summary>
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Environment.Exit(0);
         }
 
+        /// <summary>
+        /// Добавить заметку.
+        /// </summary>
         private void addNoteToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FormEditNote form = new FormEditNote();
-            if (form.ShowDialog() == DialogResult.OK)
-            {
-                _project.NoteList.Add(form.Note);
-                RefreshTable();
-            }
+            AddNote();
         }
 
+        /// <summary>
+        /// Редактировать заметку.
+        /// </summary>
         private void editNoteToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (ListNotes.CurrentRow != null)
-            {
-                FormEditNote form = new FormEditNote();
-                form.Note = _project.NoteList[ListNotes.CurrentRow.Index];
-                if (form.ShowDialog() == DialogResult.OK)
-                {
-                    _project.NoteList[ListNotes.CurrentRow.Index] = form.Note;
-                    RefreshTable();
-                }
-            }
+            EditNote();
         }
 
+        /// <summary>
+        /// Удаление заметки.
+        /// </summary>
         private void removeNoteToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (ListNotes.CurrentRow != null)
-            {
-                if (MessageBox.Show("Вы уверены?", "Удаление", MessageBoxButtons.YesNo) == DialogResult.Yes)
-                {
-                    _project.NoteList.Remove((Note)ListNotes.CurrentRow.DataBoundItem);
-                    RefreshTable();
-                 
-                }
-            }
-
+            DeleteNote();
         }
 
+        /// <summary>
+        /// Кнопка вызова окна "О программе".
+        /// </summary>
         private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FormAbout form = new FormAbout();
             form.ShowDialog();
         }
 
-        private void TableLayoutTitle_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void TextNote_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void ListNotes_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            
-        }
-
+        /// <summary>
+        /// Событие при выделение ячейки. Вывод информации о заметке.
+        /// </summary>
         private void ListNotes_Click(object sender, EventArgs e)
         {
-            FieldTitle.Text = _project.NoteList[ListNotes.CurrentRow.Index].Title;
-            FieldCategory.Text = _project.NoteList[ListNotes.CurrentRow.Index].Category.ToString();
-            DateTimeCreated.Value = _project.NoteList[ListNotes.CurrentRow.Index].TimeCreated;
-            DateTimeChanged.Value = _project.NoteList[ListNotes.CurrentRow.Index].TimeChanged;
-            TextNote.Text = _project.NoteList[ListNotes.CurrentRow.Index].Text;
+            if (ListNotes.CurrentRow != null)
+            {
+                var item = (Note)ListNotes.CurrentRow.DataBoundItem;
+                FieldTitle.Text = item.Title;
+                FieldCategory.Text = item.Category.ToString();
+                DateTimeCreated.Value = item.TimeCreated;
+                DateTimeChanged.Value = item.TimeChanged;
+                TextNote.Text = item.Text;
+                _project.CurrentNote = item;
+
+                RefreshTable();
+            }
+        }
+
+        /// <summary>
+        /// Выбор категории.
+        /// </summary>
+        private void ComboCategory_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            RefreshTable();
+        }
+
+        /// <summary>
+        /// Кнопка сортировки.
+        /// </summary>
+        private void ButtonSort_Click(object sender, EventArgs e)
+        {
+            ListNotes.DataSource = null;
+            ListNotes.DataSource = _project.Sort();
+        }
+
+        /// <summary>
+        /// Удаление заметки по нажатию на кнопку Delete.
+        /// </summary>
+        private void ListNotes_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Delete)
+            {
+                DeleteNote();
+            }
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 
 namespace NoteApp
 {
@@ -10,6 +11,9 @@ namespace NoteApp
         //Список заметок.
         public List<Note> NoteList;
 
+        // Текущая заметка.
+        public Note CurrentNote = null;
+
         /// <summary>
         /// Инициализация Project.
         /// </summary>
@@ -19,11 +23,38 @@ namespace NoteApp
         }
 
         /// <summary>
+        /// Вывод заметок заданной категории.
+        /// </summary>
+        /// <param name="noteCategory">Категория.</param>
+        /// <returns>Список заметок.</returns>
+        public List<Note> Sort(int noteCategory)
+        {
+            if (noteCategory == 0)
+            {
+                return Sort();
+            }
+            else
+            {
+                return Sort().FindAll(a => a.Category == (NoteCategory)noteCategory);
+            }
+        } 
+
+        /// <summary>
         /// Сортировка списка по дате изменения.
         /// </summary>
-        public void Sort()
+        /// <returns>Список заметок.</returns>
+        public List<Note> Sort()
         {
-            NoteList.Sort((a, b) => a.TimeChanged.CompareTo(b.TimeChanged));
+            var list = NoteList;
+            list.Sort((a, b) =>
+            {
+                if (a.TimeChanged > b.TimeChanged)
+                    return -1;
+                return 1;
+            });
+            return list;
         }
+
+
     }
 }
