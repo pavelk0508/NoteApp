@@ -1,4 +1,4 @@
-п»їusing System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,55 +8,55 @@ using System.IO;
 
 namespace NoteApp
 {
-    /// <summary>
-    /// РЎРµСЂРёР°Р»РёР·Р°С†РёСЏ РґР»СЏ РєР»Р°СЃСЃР° Note.
-    /// </summary>
+    	/// <summary>
+	/// Сериализация для класса Note.
+	/// </summary>
     public class ProjectManager
     {
-        // РџСѓС‚СЊ РІ РїР°РїРєСѓ "Р”РѕРєСѓРјРµРЅС‚С‹".
+        // Путь в папку "Документы".
         private static string _defaultPath = Environment.GetFolderPath(Environment.SpecialFolder.Personal)+@"\NoteApp.notes";
 
         /// <summary>
-        /// РЎРѕС…СЂР°РЅРµРЅРёРµ СЃРїРёСЃРєР° Р·Р°РјРµС‚РѕРє РІ С„Р°Р№Р».
+        /// Сохранение списка заметок в файл.
         /// </summary>
-        /// <param name="listNotes">РЎРїРёСЃРѕРє Р·Р°РјРµС‚РѕРє.</param>
-        /// <param name="fileName">РРјСЏ С„Р°Р№Р»Р° РЅР°Р·РЅР°С‡РµРЅРёСЏ.</param>
+        /// <param name="listNotes">Список заметок.</param>
+        /// <param name="fileName">Имя файла назначения.</param>
         public static void SaveToFile(Project listNotes, string fileName)
         {
             JsonSerializer serializer = new JsonSerializer();
-            //РћС‚РєСЂС‹РІР°РµРј РїРѕС‚РѕРє РґР»СЏ Р·Р°РїРёСЃРё РІ С„Р°Р№Р» СЃ СѓРєР°Р·Р°РЅРёРµРј РїСѓС‚Рё
+            //Открываем поток для записи в файл с указанием пути
             using (StreamWriter sw = new StreamWriter(fileName))
             using (JsonWriter writer = new JsonTextWriter(sw))
             {
-                //Р’С‹Р·С‹РІР°РµРј СЃРµСЂРёР°Р»РёР·Р°С†РёСЋ Рё РїРµСЂРµРґР°РµРј РѕР±СЉРµРєС‚, РєРѕС‚РѕСЂС‹Р№ С…РѕС‚РёРј СЃРµСЂРёР°Р»РёР·РѕРІР°С‚СЊ
+                //Вызываем сериализацию и передаем объект, который хотим сериализовать
                 serializer.Serialize(writer, (Project)listNotes);
             }
         }
 
         /// <summary>
-        /// РЎРѕС…СЂР°РЅРµРЅРёРµ Р·Р°РјРµС‚РѕРє РІ РїСѓС‚СЊ РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ.
+        /// Сохранение заметок в путь по умолчанию.
         /// </summary>
-        /// <param name="listNotes">РЎРїРёСЃРѕРє Р·Р°РїРёСЃРѕРє</param>
+        /// <param name="listNotes">Список записок</param>
         public static void SaveToFile(Project listNotes)
         {
             SaveToFile(listNotes, _defaultPath);
         }
 
         /// <summary>
-        /// РџРѕР»СѓС‡РµРЅРёРµ СЃРїРёСЃРѕРє Р·Р°РјРµС‚РѕРє РёР· С„Р°Р№Р»Р°.
+        /// Получение список заметок из файла.
         /// </summary>
-        /// <param name="filename">РРјСЏ С„Р°Р№Р»Р°.</param>
+        /// <param name="filename">Имя файла.</param>
         /// <returns></returns>
         public static Project LoadFromFile(string fileName)
         {
             Project notes = new Project();
-            //РЎРѕР·РґР°С‘Рј СЌРєР·РµРјРїР»СЏСЂ СЃРµСЂРёР°Р»РёР·Р°С‚РѕСЂР°.
+            //Создаём экземпляр сериализатора.
             JsonSerializer serializer = new JsonSerializer();
-            //РћС‚РєСЂС‹РІР°РµРј РїРѕС‚РѕРє РґР»СЏ С‡С‚РµРЅРёСЏ РёР· С„Р°Р№Р»Р° СЃ СѓРєР°Р·Р°РЅРёРµРј РїСѓС‚Рё.
+            //Открываем поток для чтения из файла с указанием пути.
             using (StreamReader sr = new StreamReader(fileName))
             using (JsonReader reader = new JsonTextReader(sr))
             {
-                //Р’С‹Р·С‹РІР°РµРј РґРµСЃРµСЂРёР°Р»РёР·Р°С†РёСЋ Рё СЏРІРЅРѕ РїСЂРµРѕР±СЂР°Р·СѓРµРј СЂРµР·СѓР»СЊС‚Р°С‚ РІ С†РµР»РµРІРѕР№ С‚РёРї РґР°РЅРЅС‹С….
+                //Вызываем десериализацию и явно преобразуем результат в целевой тип данных.
                 var noteList = (Project)serializer.Deserialize<Project>(reader);
                 notes = noteList;
             }
@@ -64,9 +64,9 @@ namespace NoteApp
         }
 
         /// <summary>
-        /// Р’РѕР·РІСЂР°С‰Р°РµС‚ СЃРїРёСЃРѕРє Р·Р°РјРµС‚РѕРє РёР· С„Р°Р№Р»Р° РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ.
+        /// Возвращает список заметок из файла по умолчанию.
         /// </summary>
-        /// <returns>РЎРїРёСЃРѕРє Р·Р°РјРµС‚РѕРє.</returns>
+        /// <returns>Список заметок.</returns>
         public static Project LoadFromFile()
         {
             return LoadFromFile(_defaultPath);

@@ -223,5 +223,10 @@ namespace NoteAppUi
                 DeleteNote();
             }
         }
+
+        private void ComboCategory_SelectedIndexChanged_1(object sender, EventArgs e)
+        {
+            RefreshTable();
+        }
     }
 }

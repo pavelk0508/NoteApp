@@ -68,9 +68,13 @@ namespace NoteApp
             if (Note == null)
             {
                 Note = new Note(DateTime.Now);
+                ComboBoxCategory.SelectedIndex = 0;
+            }
+            else
+            {
+                ComboBoxCategory.SelectedIndex = (int)Note.Category - 1;
             }
             FieldTitle.Text = Note.Title;
-            ComboBoxCategory.SelectedIndex = (int)Note.Category - 1;
             DateTimeCreated.Value = Note.TimeCreated;
             DateTimeChanged.Value = Note.TimeChanged;
             TextNote.Text = Note.Text;

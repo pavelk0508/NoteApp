@@ -1,21 +1,21 @@
-п»їusing System.Collections.Generic;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace NoteApp
 {
-    /// <summary>
-    /// РљР»Р°СЃСЃ Р·Р°РїРёСЃРѕРє, РѕС‚РІРµС‡Р°СЋС‰РёР№ Р·Р° РІРµСЃСЊ СЃРїРёСЃРѕРє Р·Р°РїРёСЃРѕРє.
-    /// </summary>
+    	/// <summary>
+	/// Класс записок, отвечающий за весь список записок.
+	/// </summary>
     public class Project
     {
-        //РЎРїРёСЃРѕРє Р·Р°РјРµС‚РѕРє.
+        //Список заметок.
         public List<Note> NoteList;
 
-        // РўРµРєСѓС‰Р°СЏ Р·Р°РјРµС‚РєР°.
+        // Текущая заметка.
         public Note CurrentNote = null;
 
         /// <summary>
-        /// РРЅРёС†РёР°Р»РёР·Р°С†РёСЏ Project.
+        /// Инициализация Project.
         /// </summary>
         public Project()
         {
@@ -23,10 +23,10 @@ namespace NoteApp
         }
 
         /// <summary>
-        /// Р’С‹РІРѕРґ Р·Р°РјРµС‚РѕРє Р·Р°РґР°РЅРЅРѕР№ РєР°С‚РµРіРѕСЂРёРё.
+        /// Вывод заметок заданной категории.
         /// </summary>
-        /// <param name="noteCategory">РљР°С‚РµРіРѕСЂРёСЏ.</param>
-        /// <returns>РЎРїРёСЃРѕРє Р·Р°РјРµС‚РѕРє.</returns>
+        /// <param name="noteCategory">Категория.</param>
+        /// <returns>Список заметок.</returns>
         public List<Note> Sort(int noteCategory)
         {
             if (noteCategory == 0)
@@ -40,9 +40,9 @@ namespace NoteApp
         } 
 
         /// <summary>
-        /// РЎРѕСЂС‚РёСЂРѕРІРєР° СЃРїРёСЃРєР° РїРѕ РґР°С‚Рµ РёР·РјРµРЅРµРЅРёСЏ.
+        /// Сортировка списка по дате изменения.
         /// </summary>
-        /// <returns>РЎРїРёСЃРѕРє Р·Р°РјРµС‚РѕРє.</returns>
+        /// <returns>Список заметок.</returns>
         public List<Note> Sort()
         {
             var list = NoteList;

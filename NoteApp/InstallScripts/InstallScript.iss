@@ -29,10 +29,6 @@ Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{
 Source: "Release\NoteAppUi.exe"; DestDir: "{app}"; Flags: ignoreversion
 Source: "Release\Newtonsoft.Json.dll"; DestDir: "{app}"; Flags: ignoreversion
 Source: "Release\NoteApp.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "Release\NoteApp.pdb"; DestDir: "{app}"; Flags: ignoreversion
-Source: "Release\NoteAppUi.exe"; DestDir: "{app}"; Flags: ignoreversion
-Source: "Release\NoteAppUi.exe.config"; DestDir: "{app}"; Flags: ignoreversion
-Source: "Release\NoteAppUi.pdb"; DestDir: "{app}"; Flags: ignoreversion
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 
 [Icons]

@@ -1,4 +1,4 @@
-п»їusing System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace NoteApp
 {
-    /// <summary>
-    /// РџРµСЂРµС‡РёСЃР»РµРЅРёРµ РєР°С‚РµРіРѕСЂРёР№ Р·Р°РјРµС‚РєРё
-    /// </summary>
-    public enum NoteCategory
+    	/// <summary>
+	/// Перечисление категорий заметки
+	/// </summary>
+    public enum NoteCategory : int
     {
         Work = 1,
         Home,

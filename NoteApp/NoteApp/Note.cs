@@ -1,4 +1,4 @@
-п»їusing System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,12 +8,12 @@ using Newtonsoft.Json;
 
 namespace NoteApp
 {
-    /// <summary>
-    /// РљР»Р°СЃСЃ РѕРїРёСЃС‹РІР°СЋС‰РёР№ Р·Р°РїРёСЃРєСѓ Note.
-    /// </summary>
+    	/// <summary>
+	/// Класс описывающий записку Note.
+	/// </summary>
     public class Note : ICloneable
     {
-        private string _title = "Р‘РµР· РЅР°Р·РІР°РЅРёСЏ";
+        private string _title = "Без названия";
         private NoteCategory _noteCategory;
         private string _text;
         [JsonProperty("TimeCreated")]
@@ -21,9 +21,9 @@ namespace NoteApp
         private DateTime _timeChanged;
 
         /// <summary>
-        /// РЎРѕР·РґР°РЅРёРµ Р·Р°РјРµС‚РєРё СЃ СѓРєР°Р·Р°РЅРёРµРј РІСЂРµРјРµРЅРё СЃРѕР·РґР°РЅРёСЏ Р·Р°РјРµС‚РєРё.
+        /// Создание заметки с указанием времени создания заметки.
         /// </summary>
-        /// <param name="dateTime">Р’СЂРµРјСЏ СЃРѕР·РґР°РЅРёСЏ.</param>
+        /// <param name="dateTime">Время создания.</param>
         public Note(DateTime dateTime)
         {
             if (dateTime <= DateTime.Now)
@@ -33,14 +33,14 @@ namespace NoteApp
             }
             else
             {
-                throw new ArgumentException("Р”Р°С‚Р° СѓРєР°Р·Р°РЅР° РЅРµРІРµСЂРЅРѕ!");
+                throw new ArgumentException("Дата указана неверно!");
             }
         }
 
         /// <summary>
-        /// Р—Р°РґР°С‚СЊ РїР°СЂР°РјРµС‚СЂС‹ Р·Р°РїРёСЃРєРё РёР· РґСЂСѓРіРѕР№ Р·Р°РїРёСЃРєРё.
+        /// Задать параметры записки из другой записки.
         /// </summary>
-        /// <param name="note">Р—Р°РїРёСЃРєР°.</param>
+        /// <param name="note">Записка.</param>
         public void Set(Note note)
         {
             this._noteCategory = note.Category;
@@ -50,7 +50,7 @@ namespace NoteApp
         }
 
         /// <summary>
-        /// Р—Р°РґР°РЅРёРµ РґР°С‚С‹ РёР·РјРµРЅРµРЅРёСЏ.
+        /// Задание даты изменения.
         /// </summary>
         public DateTime TimeChanged
         {
@@ -66,13 +66,13 @@ namespace NoteApp
                 }
                 else
                 {
-                    throw new ArgumentException("Р”Р°С‚Р° РёР·РјРµРЅРµРЅРёСЏ РЅРµ РјРѕР¶РµС‚ Р±С‹С‚СЊ Р±РѕР»СЊС€Рµ, С‡РµРј С‚РµРєСѓС‰Р°СЏ РґР°С‚Р°.");
+                    throw new ArgumentException("Дата изменения не может быть больше, чем текущая дата.");
                 }
             }
         }
 
         /// <summary>
-        /// РРјСЏ Р·Р°РјРµС‚РєРё.
+        /// Имя заметки.
         /// </summary>
         public string Title
         {
@@ -90,14 +90,14 @@ namespace NoteApp
                 {
                     if (value.Length >= 50)
                     {
-                        throw new ArgumentException("Р”Р»РёРЅР° Р·Р°РіРѕР»РѕРІРєР° РґРѕР»Р¶РЅР° Р±С‹С‚СЊ РјРµРЅСЊС€Рµ 50.");
+                        throw new ArgumentException("Длина заголовка должна быть меньше 50.");
                     }
                 }
             }
         }
 
         /// <summary>
-        /// РўРµРєСЃС‚ Р·Р°РјРµС‚РєРё.
+        /// Текст заметки.
         /// </summary>
         public string Text
         {
@@ -113,13 +113,13 @@ namespace NoteApp
                 }
                 else
                 {
-                    throw new ArgumentException("Р”Р»РёРЅР° С‚РµРєСЃС‚Р° РґРѕР»Р¶РЅР° Р±С‹С‚СЊ Р±РѕР»СЊС€Рµ 0.");
+                    throw new ArgumentException("Длина текста должна быть больше 0.");
                 }
             }
         }
 
         /// <summary>
-        /// РљР°С‚РµРіРѕСЂРёСЏ Р·Р°РїРёСЃРєРё.
+        /// Категория записки.
         /// </summary>
         public NoteCategory Category
         {
@@ -135,15 +135,15 @@ namespace NoteApp
                 }
                 else
                 {
-                    throw new ArgumentException("РЈРєР°Р·Р°РЅР° РЅРµРїСЂР°РІРёР»СЊРЅР°СЏ РєР°С‚РµРіРѕСЂРёСЏ.");
+                    throw new ArgumentException("Указана неправильная категория.");
                 }
             }
         }
 
         /// <summary>
-        /// РљР»РѕРЅРёСЂРѕРІР°РЅРёРµ РѕР±СЉРµРєС‚Р°.
+        /// Клонирование объекта.
         /// </summary>
-        /// <returns>Р’РѕР·РІСЂР°С‰Р°РµС‚ РґСѓР±Р»РёРєР°С‚ С‚РµРєСѓС‰РµР№ Р·Р°РїРёСЃРєРё.</returns>
+        /// <returns>Возвращает дубликат текущей записки.</returns>
         public object Clone()
         {
             Note note = new Note(this.TimeCreated);
