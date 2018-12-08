@@ -45,7 +45,10 @@
             this.ButtonDelete = new System.Windows.Forms.Button();
             this.ButtonEditNote = new System.Windows.Forms.Button();
             this.ButtonAddNote = new System.Windows.Forms.Button();
-            this.ListNotes = new System.Windows.Forms.DataGridView();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.ComboCategory = new System.Windows.Forms.ComboBox();
+            this.LabelShowCategory = new System.Windows.Forms.Label();
+            this.ListNotes = new System.Windows.Forms.ListBox();
             this.TableNote = new System.Windows.Forms.TableLayoutPanel();
             this.TextNote = new System.Windows.Forms.TextBox();
             this.TableLayoutTitle = new System.Windows.Forms.TableLayoutPanel();
@@ -58,13 +61,6 @@
             this.LabelCreated = new System.Windows.Forms.Label();
             this.DateTimeChanged = new System.Windows.Forms.DateTimePicker();
             this.LabelModified = new System.Windows.Forms.Label();
-            this.LabelShowCategory = new System.Windows.Forms.Label();
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.ComboCategory = new System.Windows.Forms.ComboBox();
-            this.timeChangedDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.titleDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.textDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.categoryDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.noteBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.MenuStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.SplitContainerMain)).BeginInit();
@@ -73,7 +69,7 @@
             this.SplitContainerMain.SuspendLayout();
             this.TablelLeft.SuspendLayout();
             this.TableLayoutPanelButtons.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ListNotes)).BeginInit();
+            this.tableLayoutPanel1.SuspendLayout();
             this.TableNote.SuspendLayout();
             this.TableLayoutTitle.SuspendLayout();
             this.TableLayoutCategory.SuspendLayout();
@@ -81,7 +77,6 @@
             this.SplitContainerTime.Panel1.SuspendLayout();
             this.SplitContainerTime.Panel2.SuspendLayout();
             this.SplitContainerTime.SuspendLayout();
-            this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.noteBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
@@ -185,8 +180,8 @@
             this.TablelLeft.ColumnCount = 1;
             this.TablelLeft.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.TablelLeft.Controls.Add(this.TableLayoutPanelButtons, 0, 2);
-            this.TablelLeft.Controls.Add(this.ListNotes, 0, 1);
             this.TablelLeft.Controls.Add(this.tableLayoutPanel1, 0, 0);
+            this.TablelLeft.Controls.Add(this.ListNotes, 0, 1);
             this.TablelLeft.Location = new System.Drawing.Point(3, 3);
             this.TablelLeft.Name = "TablelLeft";
             this.TablelLeft.RowCount = 3;
@@ -253,31 +248,59 @@
             this.ButtonAddNote.UseVisualStyleBackColor = true;
             this.ButtonAddNote.Click += new System.EventHandler(this.buttonAddNote_Click);
             // 
+            // tableLayoutPanel1
+            // 
+            this.tableLayoutPanel1.ColumnCount = 2;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.Controls.Add(this.ComboCategory, 1, 0);
+            this.tableLayoutPanel1.Controls.Add(this.LabelShowCategory, 0, 0);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 3);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 1;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(215, 26);
+            this.tableLayoutPanel1.TabIndex = 4;
+            // 
+            // ComboCategory
+            // 
+            this.ComboCategory.Dock = System.Windows.Forms.DockStyle.Right;
+            this.ComboCategory.FormattingEnabled = true;
+            this.ComboCategory.Items.AddRange(new object[] {
+            "All",
+            "Work",
+            "Home",
+            "HealthAndSport",
+            "People",
+            "Documents",
+            "Finance",
+            "Miscellaneous"});
+            this.ComboCategory.Location = new System.Drawing.Point(110, 3);
+            this.ComboCategory.Name = "ComboCategory";
+            this.ComboCategory.Size = new System.Drawing.Size(102, 21);
+            this.ComboCategory.TabIndex = 6;
+            this.ComboCategory.SelectedIndexChanged += new System.EventHandler(this.ComboCategory_SelectedIndexChanged_1);
+            // 
+            // LabelShowCategory
+            // 
+            this.LabelShowCategory.Location = new System.Drawing.Point(3, 0);
+            this.LabelShowCategory.Name = "LabelShowCategory";
+            this.LabelShowCategory.Size = new System.Drawing.Size(101, 26);
+            this.LabelShowCategory.TabIndex = 0;
+            this.LabelShowCategory.Text = "Show Category:";
+            this.LabelShowCategory.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
             // ListNotes
             // 
-            this.ListNotes.AllowUserToAddRows = false;
-            this.ListNotes.AllowUserToDeleteRows = false;
             this.ListNotes.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.ListNotes.AutoGenerateColumns = false;
-            this.ListNotes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.ListNotes.ColumnHeadersVisible = false;
-            this.ListNotes.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.timeChangedDataGridViewTextBoxColumn,
-            this.titleDataGridViewTextBoxColumn,
-            this.textDataGridViewTextBoxColumn,
-            this.categoryDataGridViewTextBoxColumn});
-            this.ListNotes.DataSource = this.noteBindingSource;
+            this.ListNotes.FormattingEnabled = true;
             this.ListNotes.Location = new System.Drawing.Point(3, 35);
-            this.ListNotes.MultiSelect = false;
             this.ListNotes.Name = "ListNotes";
-            this.ListNotes.ReadOnly = true;
-            this.ListNotes.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
-            this.ListNotes.Size = new System.Drawing.Size(215, 351);
-            this.ListNotes.TabIndex = 3;
-            this.ListNotes.Click += new System.EventHandler(this.ListNotes_Click);
-            this.ListNotes.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ListNotes_KeyDown);
+            this.ListNotes.Size = new System.Drawing.Size(215, 342);
+            this.ListNotes.TabIndex = 5;
+            this.ListNotes.SelectedIndexChanged += new System.EventHandler(this.ListNotes_SelectedIndexChanged);
             // 
             // TableNote
             // 
@@ -426,80 +449,6 @@
             this.LabelModified.TabIndex = 1;
             this.LabelModified.Text = "Modified:";
             // 
-            // LabelShowCategory
-            // 
-            this.LabelShowCategory.Location = new System.Drawing.Point(3, 0);
-            this.LabelShowCategory.Name = "LabelShowCategory";
-            this.LabelShowCategory.Size = new System.Drawing.Size(101, 26);
-            this.LabelShowCategory.TabIndex = 0;
-            this.LabelShowCategory.Text = "Show Category:";
-            this.LabelShowCategory.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // tableLayoutPanel1
-            // 
-            this.tableLayoutPanel1.ColumnCount = 2;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Controls.Add(this.ComboCategory, 1, 0);
-            this.tableLayoutPanel1.Controls.Add(this.LabelShowCategory, 0, 0);
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 3);
-            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 1;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(215, 26);
-            this.tableLayoutPanel1.TabIndex = 4;
-            // 
-            // ComboCategory
-            // 
-            this.ComboCategory.Dock = System.Windows.Forms.DockStyle.Right;
-            this.ComboCategory.FormattingEnabled = true;
-            this.ComboCategory.Items.AddRange(new object[] {
-            "All",
-            "Work",
-            "Home",
-            "HealthAndSport",
-            "People",
-            "Documents",
-            "Finance",
-            "Miscellaneous"});
-            this.ComboCategory.Location = new System.Drawing.Point(110, 3);
-            this.ComboCategory.Name = "ComboCategory";
-            this.ComboCategory.Size = new System.Drawing.Size(102, 21);
-            this.ComboCategory.TabIndex = 6;
-            this.ComboCategory.SelectedIndexChanged += new System.EventHandler(this.ComboCategory_SelectedIndexChanged_1);
-            // 
-            // timeChangedDataGridViewTextBoxColumn
-            // 
-            this.timeChangedDataGridViewTextBoxColumn.DataPropertyName = "TimeChanged";
-            this.timeChangedDataGridViewTextBoxColumn.HeaderText = "TimeChanged";
-            this.timeChangedDataGridViewTextBoxColumn.Name = "timeChangedDataGridViewTextBoxColumn";
-            this.timeChangedDataGridViewTextBoxColumn.ReadOnly = true;
-            this.timeChangedDataGridViewTextBoxColumn.Visible = false;
-            // 
-            // titleDataGridViewTextBoxColumn
-            // 
-            this.titleDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.titleDataGridViewTextBoxColumn.DataPropertyName = "Title";
-            this.titleDataGridViewTextBoxColumn.HeaderText = "Title";
-            this.titleDataGridViewTextBoxColumn.Name = "titleDataGridViewTextBoxColumn";
-            this.titleDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // textDataGridViewTextBoxColumn
-            // 
-            this.textDataGridViewTextBoxColumn.DataPropertyName = "Text";
-            this.textDataGridViewTextBoxColumn.HeaderText = "Text";
-            this.textDataGridViewTextBoxColumn.Name = "textDataGridViewTextBoxColumn";
-            this.textDataGridViewTextBoxColumn.ReadOnly = true;
-            this.textDataGridViewTextBoxColumn.Visible = false;
-            // 
-            // categoryDataGridViewTextBoxColumn
-            // 
-            this.categoryDataGridViewTextBoxColumn.DataPropertyName = "Category";
-            this.categoryDataGridViewTextBoxColumn.HeaderText = "Category";
-            this.categoryDataGridViewTextBoxColumn.Name = "categoryDataGridViewTextBoxColumn";
-            this.categoryDataGridViewTextBoxColumn.ReadOnly = true;
-            this.categoryDataGridViewTextBoxColumn.Visible = false;
-            // 
             // noteBindingSource
             // 
             this.noteBindingSource.DataSource = typeof(NoteApp.Note);
@@ -524,7 +473,7 @@
             this.SplitContainerMain.ResumeLayout(false);
             this.TablelLeft.ResumeLayout(false);
             this.TableLayoutPanelButtons.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.ListNotes)).EndInit();
+            this.tableLayoutPanel1.ResumeLayout(false);
             this.TableNote.ResumeLayout(false);
             this.TableNote.PerformLayout();
             this.TableLayoutTitle.ResumeLayout(false);
@@ -536,7 +485,6 @@
             this.SplitContainerTime.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.SplitContainerTime)).EndInit();
             this.SplitContainerTime.ResumeLayout(false);
-            this.tableLayoutPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.noteBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -567,11 +515,6 @@
         private System.Windows.Forms.ToolStripMenuItem EditNoteToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem RemoveNoteToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem AboutToolStripMenuItem;
-        private System.Windows.Forms.DataGridView ListNotes;
-        private System.Windows.Forms.DataGridViewTextBoxColumn timeChangedDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn titleDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn textDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn categoryDataGridViewTextBoxColumn;
         private System.Windows.Forms.BindingSource noteBindingSource;
         private System.Windows.Forms.TableLayoutPanel TableLayoutTitle;
         private System.Windows.Forms.Label FieldTitle;
@@ -581,6 +524,7 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.ComboBox ComboCategory;
         private System.Windows.Forms.Label LabelShowCategory;
+        private System.Windows.Forms.ListBox ListNotes;
     }
 }
 

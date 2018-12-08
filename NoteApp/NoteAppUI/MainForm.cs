@@ -29,9 +29,9 @@ namespace NoteAppUi
         /// </summary>
         private void EditNote()
         {
-            if (ListNotes.CurrentRow != null)
+            if (ListNotes.SelectedItem != null)
             {
-                var item = (Note)ListNotes.CurrentRow.DataBoundItem;
+                var item = (Note) ListNotes.SelectedItem;
                 FormEditNote form = new FormEditNote();
                 form.Note = (Note)item.Clone();
                 if (form.ShowDialog() == DialogResult.OK)
@@ -60,11 +60,11 @@ namespace NoteAppUi
         /// </summary>
         private void DeleteNote()
         {
-            if (ListNotes.CurrentRow != null)
+            if (ListNotes.SelectedItem != null)
             {
                 if (MessageBox.Show("Вы уверены?", "Удаление", MessageBoxButtons.YesNo) == DialogResult.Yes)
                 {
-                    _project.NoteList.Remove((Note)ListNotes.CurrentRow.DataBoundItem);
+                    _project.NoteList.Remove((Note)ListNotes.SelectedItem);
                     RefreshTable();
                 }
             }
@@ -80,6 +80,7 @@ namespace NoteAppUi
             //Заполняем listNotes.
             ListNotes.DataSource = null;
             ListNotes.DataSource = _project.Sort(ComboCategory.SelectedIndex);
+            ListNotes.DisplayMember = "Title";
         }
 
         /// <summary>
@@ -104,10 +105,9 @@ namespace NoteAppUi
             if (_project.CurrentNote != null)
             {
                 var index = ((List<Note>) ListNotes.DataSource).FindIndex(a => a.ToString() == _project.CurrentNote.ToString());
-                ListNotes.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-                if (ListNotes.Rows.Count > 0 && index >= 0)
+                if (ListNotes.Items.Count > 0 && index >= 0)
                 {
-                    ListNotes.Rows[index].Selected = true;
+                    ListNotes.SelectedIndex = index;
                 }
             }
         }
@@ -182,9 +182,9 @@ namespace NoteAppUi
         /// </summary>
         private void ListNotes_Click(object sender, EventArgs e)
         {
-            if (ListNotes.CurrentRow != null)
+            if (ListNotes.SelectedItem != null)
             {
-                var item = (Note)ListNotes.CurrentRow.DataBoundItem;
+                var item = (Note)ListNotes.SelectedItem;
                 FieldTitle.Text = item.Title;
                 FieldCategory.Text = item.Category.ToString();
                 DateTimeCreated.Value = item.TimeCreated;
@@ -227,6 +227,30 @@ namespace NoteAppUi
         private void ComboCategory_SelectedIndexChanged_1(object sender, EventArgs e)
         {
             RefreshTable();
+        }
+
+        private void ListNotes_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        
+        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ListNotes_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (ListNotes.SelectedItem != null)
+            {
+                var note = (Note) ListNotes.SelectedItem;
+                FieldTitle.Text = note.Title;
+                FieldCategory.Text = note.Category.ToString();
+                DateTimeCreated.Value = note.TimeCreated;
+                DateTimeChanged.Value = note.TimeChanged;
+                TextNote.Text = note.Text;
+            }
         }
     }
 }
